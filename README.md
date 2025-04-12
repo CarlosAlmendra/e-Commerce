@@ -5,32 +5,34 @@ Nossa aplicação de e-commerce já conta com o cadastro de usuários e produtos
 ## Objetivo
 Implementar uma funcionalidade de venda que:
 
-´´´´Busque um usuário existente no banco de dados (por e-mail).
-Busque um ou mais produtos existentes no banco de dados (por ID).
-Permita ao usuário escolher uma forma de pagamento dentre as opções disponíveis.
-Registre a venda, associando o usuário, os produtos escolhidos e a forma de pagamento.
-´´´
+    1. Busque um usuário existente no banco de dados (por e-mail).
+    2. Busque um ou mais produtos existentes no banco de dados (por ID).
+    3. Permita ao usuário escolher uma forma de pagamento dentre as opções disponíveis.
+    4. Registre a venda, associando o usuário, os produtos escolhidos e a forma de pagamento.
 
-Requisitos Funcionais
+## Requisitos Funcionais
 O sistema deve permitir que o operador (via linha de comando) informe:
 
-Email do usuário comprador
-IDs dos produtos que deseja comprar
-Forma de pagamento (ex: Cartão de Crédito, Boleto, PIX)
+    a. Email do usuário comprador
+    b. IDs dos produtos que deseja comprar
+    c. Forma de pagamento (ex: Cartão de Crédito, Boleto, PIX)
+
 O sistema deve validar:
 
-Se o usuário existe
-Se os produtos existem
-Se a forma de pagamento é válida
+    a. Se o usuário existe
+    b. Se os produtos existem
+    c.Se a forma de pagamento é válida
+
 O sistema deve exibir um resumo da venda com:
 
-Nome do cliente
-Lista de produtos (nome + preço)
-Valor total
-Forma de pagamento escolhida
-A venda deve ser armazenada em banco de dados SQLite com os dados mencionados.
+    a. Nome do cliente
+    b. Lista de produtos (nome + preço)
+    c. Valor total
+    d. Forma de pagamento escolhida
+    e. A venda deve ser armazenada em banco de dados SQLite com os dados mencionados.
 
-Exemplo de Execução
+## Exemplo de Execução
+```
 Digite o Email do usuário: rafael@example.com
 Usuário encontrado: João da Silva
 
@@ -57,12 +59,16 @@ Valor total: R$ 250.00
 Pagamento: PIX  
 
 Venda registrada com sucesso!
-Requisitos Técnicos
+```
+
+## Requisitos Técnicos
 Utilizar banco de dados SQLite juntamente com a conexão JDBC
 O pagamento do produto deve utilizar obrigatóriamente o Design Pattern Strategy e Factory como visto em sala de aula.
 A forma de pagamento pode ser um enum, mas não é um requisito obrigatório:
+  ```
 enum FormaPagamento {
     CARTAO,
     BOLETO,
     PIX
 }
+  ```
