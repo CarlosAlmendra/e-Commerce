@@ -1,6 +1,8 @@
 package org.unicesumar.util;
 
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,7 +11,7 @@ import java.util.Properties;
 
 public class DatabaseConnection {
 
-    private static final String PROPERTIES_FILE = "db.properties";
+    private static final String PROPERTIES_FILE = "application.properties";
     private static Connection connection;
 
     public static Connection getConnection() throws Exception {
@@ -26,14 +28,20 @@ public class DatabaseConnection {
             props.load(input);
         }
 
-        String driver = props.getProperty("db.driver");
         String url = props.getProperty("db.url");
-        String user = props.getProperty("db.user");
-        String password = props.getProperty("db.password");
 
-        Class.forName(driver);
-        connection = DriverManager.getConnection(url, user, password);
+        connection = DriverManager.getConnection(url);
         return connection;
+    }
+
+    public static void initDatabase(String sql) throws Exception {
+        try (Statement stmt = getConnection().createStatement()) {
+            for (String command : sql.split(";")) {
+                if (!command.trim().isEmpty()) {
+                    stmt.executeUpdate(command.trim());
+                }
+            }
+        }
     }
 
     public static void closeResources(ResultSet rs, Statement stmt, Connection conn) {
