@@ -5,10 +5,9 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -22,5 +21,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
-
+    public String toString(){
+        return "User: " + id
+                + " Name: " + name
+                + " Email: " + email;
+    }
 }
