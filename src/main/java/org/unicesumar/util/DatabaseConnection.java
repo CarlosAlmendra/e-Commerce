@@ -35,12 +35,14 @@ public class DatabaseConnection {
     }
 
     public static void initDatabase(String sql) throws Exception {
-        try (Statement stmt = getConnection().createStatement()) {
+        try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
             for (String command : sql.split(";")) {
                 if (!command.trim().isEmpty()) {
                     stmt.executeUpdate(command.trim());
                 }
             }
+        } finally {
+            connection = null;
         }
     }
 
