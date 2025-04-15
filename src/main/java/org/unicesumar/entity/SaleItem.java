@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "sale_item")
+@Table(name = "sale_items")
 public class SaleItem {
 
     @Id

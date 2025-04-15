@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
 
     @Id
@@ -22,5 +22,10 @@ public class Product {
     private String name;
 
     @Column(name = "price")
-    private BigDecimal price;
+    private Double price;
+
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
 }
