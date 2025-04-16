@@ -29,6 +29,12 @@ public class SaleItem {
     @Column(name = "transaction_key")
     private UUID transactionKey;
 
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    @JoinColumn(name = "user_name", referencedColumnName = "name")
+    private String name;
+
     public SaleItem (Product product, int quantity, double price, UUID transactionKey) {
         this.product = product;
         this.quantity = quantity;

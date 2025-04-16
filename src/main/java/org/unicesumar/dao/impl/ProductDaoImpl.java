@@ -2,7 +2,6 @@ package org.unicesumar.dao.impl;
 
 import org.unicesumar.dao.ProductDao;
 import org.unicesumar.entity.Product;
-import org.unicesumar.entity.User;
 import org.unicesumar.exceptions.ECommerceException;
 
 import java.sql.Connection;
